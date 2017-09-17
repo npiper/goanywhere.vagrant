@@ -120,3 +120,7 @@ On your local machine:
 https://localhost:8081/goanywhere/
 
 User "administrator" with "goanywhere" as the password
+
+# References
+
+https://github.com/lowescott/learning-tools/tree/master/vagrant/aws
