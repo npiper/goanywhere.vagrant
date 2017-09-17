@@ -38,6 +38,8 @@ Vagrantfile uses an install script `post_install.sh` to install basic software (
 
 The install / prompt process sets up the following Ports.
 
+You can change these directly in the `post_install.sh` script if different ports are preferred, they were set to these in order to work on a dev machine.
+
 ```
 What port numbers should GoAnywhere MFT use?
 Administration Port
@@ -70,7 +72,31 @@ Shutdown Port
 
 # Starting up
 
+## AWS
+
+Pre-Requisites:
+ * AWS Authentication details
+ * Security group in your region that allows SSH, HTTP on port 8000
+ * EC2 Private key
+
+Set the following environment variables to your AWS account details:
+
+```
+AWS_ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY
+```
+
+Modify Vagrantfile EC2 Private key name and file location at `aws.keypair.name` and `override.ssh.private_key_path` in the Vagrantfile.
+
+The region is set to eu-west-2 (London), to change this edit the Vagrantfile variable `aws.region`.
+
+The build uses a RedHat Enterprise Linux ami `#ami-a1f5e4c5`.
+
+## Local
+
 The install uses a daemon process to startup, on startup you should see a GoAnywhere service.
+
+Use the `Vagrantfile.local` file instead of the AWS default.
 
 ```
 vagrant up
